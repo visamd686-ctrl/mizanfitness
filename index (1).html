@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mizan Fitness Club – Train Hard. Live Balanced.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f2;--surface:#fff;--ink:#111214;--muted:#5d6068;--line:#e4e2dc;--accent:#ff4d1c;--dark:#0e0f11;--r:16px;
+--head:"Barlow Condensed","Arial Narrow",Impact,sans-serif;--body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0f11;--surface:#17181b;--ink:#f3f3f1;--muted:#a0a3aa;--line:#2a2c31;--dark:#050506;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e0f11;--surface:#17181b;--ink:#f3f3f1;--muted:#a0a3aa;--line:#2a2c31;--dark:#050506;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{height:auto;scroll-padding-top:calc(90px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);text-transform:uppercase;line-height:1;margin:0;letter-spacing:.01em}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;border:2px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s;font:600 15px var(--body)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px var(--accent)}
+.btn.ghost{background:transparent;border-color:rgba(255,255,255,.5)}
+.top{background:var(--dark);color:#fff;font-size:13px;text-align:center;padding:8px 12px}.top b{color:var(--accent)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:26px;height:72px}
+.logo{font:800 28px/1 var(--head);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.logo i{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;color:#fff;font-style:normal;font-size:20px}
+.logo small{display:block;font:600 10px/1 var(--body);letter-spacing:.3em;color:var(--muted)}
+nav{display:flex;gap:6px;margin-left:auto;font-weight:500;font-size:15px}
+nav>a,.dd>a{padding:8px 13px;border-radius:999px;color:var(--muted);display:block;transition:.2s}
+nav>a:hover,.dd>a:hover,nav a.on{color:var(--ink);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+nav a.on{color:var(--accent)}
+.dd{position:relative}.dd>a::after{content:" ▾";font-size:11px}
+.dd .m{position:absolute;top:100%;left:0;min-width:220px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);transition:.2s;box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
+.dd:hover .m,.dd:focus-within .m{opacity:1;visibility:visible;transform:none}
+.dd .m a{display:block;padding:10px 12px;border-radius:9px;color:var(--ink)}.dd .m a:hover{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.tools{display:flex;gap:10px;align-items:center}
+.ic{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;color:var(--ink);font-size:18px;font-weight:700}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:.3s;z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,88vw);background:var(--surface);z-index:50;transform:translateX(100%);transition:transform .35s;padding:calc(22px + env(safe-area-inset-top,0px)) 24px 24px;display:flex;flex-direction:column;overflow-y:auto}
+body.open .scrim{opacity:1;visibility:visible}body.open .drawer{transform:none}
+.drawer .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.drawer>a{font:700 30px var(--head);text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.drawer>a::after{content:"→";color:var(--accent)}.drawer>a.on{color:var(--accent)}
+.drawer .info{margin-top:auto;padding-top:24px;color:var(--muted);font-size:14px}
+.page{display:none}.page.on{display:block;animation:in .5s}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero{background:radial-gradient(900px 500px at 85% 20%,rgba(255,77,28,.45),transparent 60%),var(--dark);color:#fff;position:relative;overflow:hidden;padding:110px 0 120px}
+.hero::after,.ph::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 22px);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{display:inline-block;font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.hero h1{font-size:clamp(52px,9vw,116px);font-weight:800}.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:480px;color:#c9cbd1;margin:20px 0 32px;font-size:17px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.big{font:800 clamp(140px,24vw,300px)/.8 var(--head);color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.22);text-align:center;user-select:none}
+.ph{background:radial-gradient(700px 300px at 90% 0,rgba(255,77,28,.4),transparent 60%),var(--dark);color:#fff;padding:70px 0 60px;position:relative;overflow:hidden}
+.ph .wrap{position:relative;z-index:1}.ph h1{font-size:clamp(44px,7vw,84px);font-weight:800}
+.ph p{color:#c9cbd1;max-width:520px;margin:12px 0 0}.crumb{font-size:13px;color:#a7a9b0;margin-bottom:14px}.crumb a{color:var(--accent)}
+section{padding:76px 0}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sh h2{font-size:clamp(34px,5vw,56px);font-weight:800}.sh p{color:var(--muted);margin:10px 0 0;max-width:460px}
+.link{font-weight:600;color:var(--accent)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .25s,border-color .25s}
+a.card:hover,.card.h:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card .img{height:170px;background:var(--g);position:relative;display:grid;place-items:center;font-size:54px}
+.card .img::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 2px,transparent 2px 18px)}
+.card .img span{position:relative;z-index:1}
+.card .b{padding:20px}.card h3{font-size:24px;font-weight:700;margin-bottom:8px}.card p{margin:0 0 12px;color:var(--muted);font-size:14.5px}
+.av{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#ff8a1c);color:#fff;display:grid;place-items:center;font:800 34px var(--head);margin:26px auto 0}
+.card.t{text-align:center}.card.t .b span{color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.stats{background:var(--dark);color:#fff;padding:52px 0}.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stats b{display:block;font:800 clamp(40px,6vw,66px)/1 var(--head);color:var(--accent)}.stats span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#a7a9b0}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:32px;display:flex;flex-direction:column;position:relative}
+.plan.hot{background:var(--dark);color:#fff;border-color:var(--accent);box-shadow:0 24px 50px -26px var(--accent)}
+.tag{position:absolute;top:-13px;right:24px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:5px 14px;border-radius:999px}
+.plan h3{font-size:30px}.price{margin:16px 0 4px;font:800 54px/1 var(--head)}.price s{font:500 18px var(--body);opacity:.5;margin-left:8px}
+.plan ul{list-style:none;padding:0;margin:22px 0 28px;flex:1;display:grid;gap:10px;font-size:15px}.plan li::before{content:"✓";color:var(--accent);font-weight:700;margin-right:10px}
+.plan .btn{justify-content:center}.plan:not(.hot) .btn{background:transparent;color:var(--ink)}.plan:not(.hot) .btn:hover{background:var(--accent);color:#fff}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:14.5px}th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+th{font:700 18px var(--head);text-transform:uppercase;background:color-mix(in srgb,var(--accent) 10%,var(--surface))}tr:last-child td{border:0}td b{color:var(--accent)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px}summary{cursor:pointer;font-weight:600}details p{color:var(--muted);margin:10px 0 0}
+.form{display:grid;gap:14px}.form input,.form select,.form textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:15px var(--body)}
+.form input:focus,.form textarea:focus,.form select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.ci{display:flex;gap:14px;margin-bottom:18px}.ci i{font-style:normal;width:46px;height:46px;border-radius:14px;background:color-mix(in srgb,var(--accent) 14%,var(--surface));display:grid;place-items:center;flex:none}
+.ci span{display:block;color:var(--muted);font-size:14px}
+.band{background:linear-gradient(120deg,var(--accent),#ff8a1c);color:#fff;border-radius:28px;padding:52px;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.band h2{font-size:clamp(32px,5vw,56px);font-weight:800;max-width:560px}.band .btn{background:#fff;color:#111;border-color:#fff}
+footer{background:var(--dark);color:#c9cbd1;padding:60px 0 26px;font-size:15px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+footer h4{font:700 20px var(--head);text-transform:uppercase;color:#fff;margin:0 0 14px}footer a,footer span{display:block;padding:3px 0;opacity:.85}footer a:hover{opacity:1;color:var(--accent)}
+.copy{border-top:1px solid #23252a;margin-top:40px;padding-top:20px;font-size:13px;opacity:.7}
+@media (max-width:960px){nav,.tools .btn{display:none}.g3,.plans{grid-template-columns:1fr 1fr}.g4,.fg,.stats .wrap{grid-template-columns:1fr 1fr}.hero .wrap,.g2{grid-template-columns:1fr}.big{display:none}.nav{justify-content:space-between}}
+@media (max-width:640px){.g3,.g4,.plans,.fg{grid-template-columns:1fr}.band{padding:34px 24px}section{padding:56px 0}.hero{padding:70px 0 80px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="top">New member offer: <b>৳1,000 off</b> your first 3 months · Call <b>+880 1XXX-XXXXXX</b></div>
+<header><div class="wrap nav">
+  <a class="logo" href="#home"><i>M</i><span>Mizan<small>FITNESS CLUB</small></span></a>
+  <nav id="nav">
+    <a href="#home">Home</a><a href="#about">About</a>
+    <div class="dd"><a href="#programs" data-p="programs">Programs</a><div class="m"><a href="#programs">All Programs</a><a href="#schedule">Class Schedule</a><a href="#trainers">Personal Training</a></div></div>
+    <a href="#trainers">Trainers</a><a href="#membership">Membership</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="tools"><button class="ic" id="theme" aria-label="Toggle theme">◐</button><a class="btn" href="#membership">Join Now</a><button class="ic" id="more" aria-label="Open menu">⋮</button></div>
+</div></header>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" aria-label="Menu">
+  <div class="hd"><div class="logo"><i>M</i><span>Mizan<small>FITNESS CLUB</small></span></div><button class="ic" id="close" aria-label="Close">✕</button></div>
+  <a href="#home">Home</a><a href="#about">About Us</a><a href="#programs">Programs</a><a href="#schedule">Schedule</a><a href="#trainers">Trainers</a><a href="#membership">Membership</a><a href="#contact">Contact</a>
+  <div class="info">+880 1XXX-XXXXXX<br>hello@mizanfitness.com<br>Sat – Thu 5:30 AM – 11 PM</div>
+</aside>
+
+<main>
+<!-- HOME -->
+<div class="page" id="p-home">
+  <div class="hero"><div class="wrap"><div><span class="eyebrow">Mizan Fitness Club · Dhaka</span><h1>Train hard.<br><em>Live balanced.</em></h1><p>Premium strength and cardio floors, certified coaches and a community that keeps you showing up.</p><div class="cta"><a class="btn" href="#membership">Start Free Trial →</a><a class="btn ghost" href="#programs">Explore Programs</a></div></div><div class="big">MFC</div></div></div>
+  <div class="stats"><div class="wrap"><div><b>2,500+</b><span>Active members</span></div><div><b>25+</b><span>Expert coaches</span></div><div><b>60+</b><span>Weekly classes</span></div><div><b>12,000</b><span>Sq ft space</span></div></div></div>
+  <section><div class="wrap"><div class="sh"><div><h2>Popular Programs</h2><p>Pick a path that matches your goal and level.</p></div><a class="link" href="#programs">View all →</a></div>
+    <div class="g3">
+      <a class="card" href="#programs"><div class="img" style="--g:linear-gradient(135deg,#ff4d1c,#7a1d0a)"><span>🏋️</span></div><div class="b"><h3>Strength Training</h3><p>Free weights and machines.</p></div></a>
+      <a class="card" href="#programs"><div class="img" style="--g:linear-gradient(135deg,#ff8a1c,#7a3a05)"><span>🏃</span></div><div class="b"><h3>Cardio &amp; HIIT</h3><p>Treadmills, bikes and circuits.</p></div></a>
+      <a class="card" href="#programs"><div class="img" style="--g:linear-gradient(135deg,#3a3d46,#14151a)"><span>🥊</span></div><div class="b"><h3>Boxing &amp; MMA</h3><p>Fight-fitness classes.</p></div></a>
+    </div></div></section>
+  <section style="padding-top:0"><div class="wrap"><div class="band"><h2>Your first week is on us.</h2><a class="btn" href="#contact">Claim Free Trial →</a></div></div></section>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="p-about">
+  <div class="ph"><div class="wrap"><div class="crumb"><a href="#home">Home</a> / About</div><h1>About Us</h1><p>A modern club built on coaching, community and consistency.</p></div></div>
+  <section><div class="wrap g2"><div><span class="eyebrow">Our story</span><h2 style="font-size:clamp(34px,5vw,54px);font-weight:800">More than a gym</h2><p style="color:var(--muted)">Mizan means balance. We started with one idea: training should fit your life, not take it over. Today our 12,000 sq ft club combines pro-grade equipment, certified coaches and programs for every level.</p><a class="btn" href="#contact">Visit the Club →</a></div>
+    <div class="card"><div class="img" style="--g:linear-gradient(135deg,#ff4d1c,#14151a);height:300px"><span style="font-size:90px">💪</span></div></div></div></section>
+  <section style="padding-top:0"><div class="wrap"><div class="sh"><h2>Our Facilities</h2></div><div class="g4">
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#ff4d1c,#7a1d0a)"><span>🏋️</span></div><div class="b"><h3>Strength Floor</h3><p>5,000 sq ft of racks, benches and plates.</p></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#ff8a1c,#7a3a05)"><span>🏃</span></div><div class="b"><h3>Cardio Studio</h3><p>3,000 sq ft with treadmills and bikes.</p></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#3a3d46,#14151a)"><span>🥊</span></div><div class="b"><h3>Fight Zone</h3><p>Ring, bags and mats.</p></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#2c7a6b,#0d2a25)"><span>🧖</span></div><div class="b"><h3>Recovery Lounge</h3><p>Massage, stretching and showers.</p></div></div></div></div></section>
+</div>
+
+<!-- PROGRAMS -->
+<div class="page" id="p-programs">
+  <div class="ph"><div class="wrap"><div class="crumb"><a href="#home">Home</a> / Programs</div><h1>Programs</h1><p>Six ways to train, all led by certified coaches.</p></div></div>
+  <section><div class="wrap g3">
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#ff4d1c,#7a1d0a)"><span>🏋️</span></div><div class="b"><h3>Strength Training</h3><p>Progressive overload with coached lifts and machine circuits.</p><a class="link" href="#schedule">See times →</a></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#ff8a1c,#7a3a05)"><span>🏃</span></div><div class="b"><h3>Cardio &amp; HIIT</h3><p>Interval sessions that build endurance and burn fat.</p><a class="link" href="#schedule">See times →</a></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#3a3d46,#14151a)"><span>🥊</span></div><div class="b"><h3>Boxing &amp; MMA</h3><p>Technique, pad work and conditioning for all levels.</p><a class="link" href="#schedule">See times →</a></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#2c7a6b,#0d2a25)"><span>🧘</span></div><div class="b"><h3>Yoga &amp; Mobility</h3><p>Flexibility, balance and active recovery.</p><a class="link" href="#schedule">See times →</a></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#4b5bd6,#151a44)"><span>🚴</span></div><div class="b"><h3>Spin Studio</h3><p>Rhythm-based cycling with live coaching.</p><a class="link" href="#schedule">See times →</a></div></div>
+    <div class="card h"><div class="img" style="--g:linear-gradient(135deg,#7bb83d,#1f3a0d)"><span>🥗</span></div><div class="b"><h3>Nutrition Coaching</h3><p>Meal plans and weekly check-ins.</p><a class="link" href="#contact">Book a call →</a></div></div>
+  </div></section>
+</div>
+
+<!-- SCHEDULE -->
+<div class="page" id="p-schedule">
+  <div class="ph"><div class="wrap"><div class="crumb"><a href="#home">Home</a> / Schedule</div><h1>Class Schedule</h1><p>Weekly timetable. Book a spot at the front desk or by phone.</p></div></div>
+  <section><div class="wrap"><div class="tw"><table>
+    <tr><th>Time</th><th>Sat</th><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th></tr>
+    <tr><td><b>6:30 AM</b></td><td>Strength 101</td><td>HIIT Burn</td><td>HIIT Burn</td><td>Power Yoga</td><td>HIIT Burn</td><td>Power Yoga</td></tr>
+    <tr><td><b>8:00 AM</b></td><td>Power Yoga</td><td>—</td><td>Spin Ride</td><td>—</td><td>Spin Ride</td><td>—</td></tr>
+    <tr><td><b>5:30 PM</b></td><td>—</td><td>Strength 101</td><td>Boxing Basics</td><td>Strength 101</td><td>Boxing Basics</td><td>HIIT Burn</td></tr>
+    <tr><td><b>7:00 PM</b></td><td>Spin Ride</td><td>Spin Ride</td><td>—</td><td>Spin Ride</td><td>—</td><td>Boxing Basics</td></tr>
+  </table></div></div></section>
+</div>
+
+<!-- TRAINERS -->
+<div class="page" id="p-trainers">
+  <div class="ph"><div class="wrap"><div class="crumb"><a href="#home">Home</a> / Trainers</div><h1>Meet the Coaches</h1><p>Certified, experienced and focused on your progress.</p></div></div>
+  <section><div class="wrap g4">
+    <div class="card t h"><div class="av">M</div><div class="b"><h3>Mizanur R.</h3><span>Head Coach</span><p>10+ years in strength and conditioning.</p></div></div>
+    <div class="card t h"><div class="av">S</div><div class="b"><h3>Sadia A.</h3><span>Yoga &amp; Mobility</span><p>Certified instructor for all levels.</p></div></div>
+    <div class="card t h"><div class="av">T</div><div class="b"><h3>Tanvir H.</h3><span>Boxing &amp; MMA</span><p>Amateur champion turned coach.</p></div></div>
+    <div class="card t h"><div class="av">N</div><div class="b"><h3>Nusrat J.</h3><span>Nutrition</span><p>Practical meal plans that last.</p></div></div>
+  </div></section>
+</div>
+
+<!-- MEMBERSHIP -->
+<div class="page" id="p-membership">
+  <div class="ph"><div class="wrap"><div class="crumb"><a href="#home">Home</a> / Membership</div><h1>Membership Plans</h1><p>Simple pricing, no hidden fees. Upgrade or cancel any time.</p></div></div>
+  <section><div class="wrap"><div class="plans">
+    <div class="plan"><h3>Starter</h3><div class="price">৳2,500<s>৳3,000</s></div><small>per month</small><ul><li>Gym floor access</li><li>Locker &amp; shower</li><li>1 fitness assessment</li><li>Off-peak classes</li></ul><a class="btn" href="#contact">Join Starter</a></div>
+    <div class="plan hot"><span class="tag">MOST POPULAR</span><h3>Performance</h3><div class="price">৳4,500<s>৳5,500</s></div><small>per month</small><ul><li>Everything in Starter</li><li>Unlimited group classes</li><li>2 PT sessions a month</li><li>Nutrition plan</li></ul><a class="btn" href="#contact">Join Performance</a></div>
+    <div class="plan"><h3>Elite</h3><div class="price">৳8,000<s>৳9,500</s></div><small>per month</small><ul><li>Everything in Performance</li><li>8 PT sessions a month</li><li>Recovery lounge</li><li>Guest passes</li></ul><a class="btn" href="#contact">Join Elite</a></div>
+  </div></div></section>
+  <section style="padding-top:0"><div class="wrap" style="max-width:800px"><div class="sh"><h2>FAQ</h2></div>
+    <details><summary>Is there a joining fee?</summary><p>No. The monthly price is all you pay.</p></details>
+    <details><summary>Can I freeze my membership?</summary><p>Yes, up to 30 days per year for travel or medical reasons.</p></details>
+    <details><summary>Do you offer a trial?</summary><p>Yes, your first week is free. Contact us to book.</p></details>
+  </div></section>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="p-contact">
+  <div class="ph"><div class="wrap"><div class="crumb"><a href="#home">Home</a> / Contact</div><h1>Contact Us</h1><p>Book a tour, claim your free week or ask anything.</p></div></div>
+  <section><div class="wrap g2" style="align-items:start">
+    <div class="form" id="f"><input id="fn" placeholder="Full name"><input id="fp" placeholder="Phone number"><select id="fi"><option>Free trial</option><option>Membership</option><option>Personal training</option></select><textarea id="fm" rows="4" placeholder="Message"></textarea><button class="btn" id="send" style="justify-content:center">Send Message →</button><p id="ok" style="color:var(--accent);margin:0;display:none">Thank you! We will call you shortly.</p></div>
+    <div><div class="ci"><i>📍</i><div><b>Address</b><span>Your address, Dhaka</span></div></div><div class="ci"><i>📞</i><div><b>Phone</b><span>+880 1XXX-XXXXXX</span></div></div><div class="ci"><i>✉️</i><div><b>Email</b><span>hello@mizanfitness.com</span></div></div><div class="ci"><i>🕒</i><div><b>Hours</b><span>Sat – Thu: 5:30 AM – 11 PM · Fri: 7 AM – 10 PM</span></div></div></div>
+  </div></section>
+</div>
+</main>
+
+<footer><div class="wrap"><div class="fg">
+  <div><div class="logo" style="color:#fff"><i>M</i><span>Mizan<small>FITNESS CLUB</small></span></div><p style="max-width:300px;margin-top:16px">Modern training, real coaching and a community that moves with you.</p></div>
+  <div><h4>Explore</h4><a href="#home">Home</a><a href="#about">About</a><a href="#programs">Programs</a><a href="#schedule">Schedule</a></div>
+  <div><h4>Join</h4><a href="#trainers">Trainers</a><a href="#membership">Membership</a><a href="#contact">Contact</a></div>
+  <div><h4>Contact</h4><span>+880 1XXX-XXXXXX</span><span>hello@mizanfitness.com</span><span>Sat – Thu: 5:30 AM – 11 PM</span></div>
+</div><div class="copy">© 2026 Mizan Fitness Club. All rights reserved.</div></div></footer>
+
+<script>
+(function(){
+var ids=['home','about','programs','schedule','trainers','membership','contact'],b=document.body;
+function route(){
+  var h=(location.hash||'').slice(1);if(ids.indexOf(h)<0)h='home';
+  document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id==='p-'+h);});
+  document.querySelectorAll('nav a,.drawer>a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+h);});
+  b.classList.remove('open');window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);route();
+document.getElementById('more').onclick=function(){b.classList.add('open');};
+document.getElementById('close').onclick=document.getElementById('scrim').onclick=function(){b.classList.remove('open');};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('open');});
+document.getElementById('theme').onclick=function(){var r=document.documentElement;r.setAttribute('data-theme',getComputedStyle(r).colorScheme==='dark'?'light':'dark');};
+document.getElementById('send').onclick=function(){document.getElementById('ok').style.display='block';};
+})();
+</script>
+</body>
+</html>
